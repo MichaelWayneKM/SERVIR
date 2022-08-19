@@ -1,0 +1,40 @@
+.main-header {
+    padding: 40px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    background-color: #1a1a1a00;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 5;
+}
+
+.main-header .header-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: large;
+    color: #FFFFFF;
+    letter-spacing: 5px;
+}
+
+
+.main-header > nav{
+    display: flex;
+    flex-direction: row;
+    font-family: 'Poppins', sans-serif;
+}
+
+.main-header > nav > div.navitem {
+    padding: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: 5px;
+    margin-right: 5px;
+    border-radius: 30px;
+    color: #FFFFFF;
+    font-weight: 600;
+    cursor: pointer;
+}
