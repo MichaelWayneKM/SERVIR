@@ -15,12 +15,17 @@
     margin-left: 20px;
     margin-top: 60px;
     position: absolute;
-    background-color: #1a1a1a31;
+    background-color: #1a1a1a90;
     pointer-events: all;
     padding: 10px;
     border-radius: 20px;
     right: 10px;
+    opacity: 1;
+    
 }
+
+
+
 #intro-agent-container h5{
     font-family: "Poppins", sans-serif;
     font-size: 35px;

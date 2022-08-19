@@ -3,7 +3,12 @@ import Carousel from "react-animated-carousel";
 import Globe from "react-globe.gl";
 import GlobeView from "./GlobeView";
 import "../styles/components/DisplayHome.css";
+import GlobeCard from "./GlobeCards";
 
+import styled, { keyframes } from 'styled-components';
+import { fadeInRight } from "react-animations"
+
+const fadeInAnimation = keyframes`${fadeInRight}`;
 function DisplayHome() {
   return (
     <div id="main-home-display">
@@ -11,7 +16,7 @@ function DisplayHome() {
         <GlobeView />
 
         <div id="globe-view-lambert">
-          <div id="intro-agent-container">
+          <Card id="intro-agent-container">
             <h5>Connecting Space to Village</h5>
             <p>
               SERVIR is helping countries in Eastern and Southern Africa Region
@@ -20,9 +25,10 @@ function DisplayHome() {
               resilience to climate change
             </p>
 
-            <button id="disp-hm-more-about-servir-btn">More about servir</button>
-          </div>
+            <button id="disp-hm-more-about-servir-btn">More about SERVIR</button>
+          </Card>
 
+         <GlobeCard /> 
           
         </div>
       </div>
@@ -33,3 +39,7 @@ function DisplayHome() {
 }
 
 export default DisplayHome;
+
+const Card = styled.div`
+animation: 5s ${fadeInAnimation};
+`
