@@ -28,7 +28,7 @@ function DisplayHome() {
             <button id="disp-hm-more-about-servir-btn">More about SERVIR</button>
           </Card>
 
-         <GlobeCard /> 
+         {/* <GlobeCard />  */}
           
         </div>
       </div>
