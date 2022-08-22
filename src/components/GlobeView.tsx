@@ -7,13 +7,21 @@ import React, {
 } from "react";
 
 import Globe from "react-globe.gl";
+import { useDispatch, useSelector } from "react-redux";
 import * as THREE from "three";
+import {
+  globeStateSlector,
+  mapZoomActive,
+} from "../core/redux/slices/globe_mode_reducer";
 
 function GlobeView() {
   const globeEl = useRef<any>();
   const [countries, setCountries] = useState({ features: [] });
   const [hover, setHover] = useState<null | boolean>();
   const [rotation, setRotation] = useState(true);
+
+  const { mapActive } = useSelector(globeStateSlector);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     fetch(
@@ -53,10 +61,25 @@ function GlobeView() {
     globeEl.current.controls().autoRotate = true;
     globeEl.current.controls().autoRotateSpeed = -0.1;
 
-    globeEl.current.pointOfView({ altitude: 1, lat: 1.2212, lng: 36.8941 }, 5000);
+    globeEl.current.pointOfView(
+      { altitude: 1, lat: 1.2212, lng: 36.8941 },
+      5000
+    );
 
     // globeEl.current.controls().update();
   }, [rotation]);
+
+  useEffect(() => {
+    if (!mapActive) {
+      globeEl.current.controls().autoRotate = true;
+      globeEl.current.controls().autoRotateSpeed = -0.1;
+
+      globeEl.current.pointOfView(
+        { altitude: 1, lat: 1.2212, lng: 36.8941 },
+        5000
+      );
+    }
+  }, [mapActive]);
 
   const onHoverHandler = useCallback((polygon: any) => {
     if (polygon !== null) {
@@ -101,8 +124,10 @@ function GlobeView() {
     //lng: (Math.random() - 0.5) * 360,1.2212° S, 36.8941° E
     lat: 1.2212,
     lng: 36.8941,
-    size: 30,//7 + Math.random() * 30, // size accordint to Magnitude
-    color: `rgba(${Math.random() * 156}, ${Math.random() * 16}, ${Math.random() * 56}, 1)` // ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
+    size: 30, //7 + Math.random() * 30, // size accordint to Magnitude
+    color: `rgba(${Math.random() * 156}, ${Math.random() * 16}, ${
+      Math.random() * 56
+    }, 1)`, // ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
   }));
 
   return (
@@ -133,10 +158,14 @@ function GlobeView() {
         el.style["pointer-events" as any] = "auto";
         el.style.cursor = "pointer";
         el.onclick = () => {
-          console.info(d)
-          globeEl.current.pointOfView({ altitude: 0.05, lat: d.lat, lng: d.lng}, 2000)
+          console.info(d);
+          globeEl.current.pointOfView(
+            { altitude: 0.05, lat: d.lat, lng: d.lng },
+            2000
+          );
+          dispatch(mapZoomActive());
         };
-        
+
         return el;
       }}
     />

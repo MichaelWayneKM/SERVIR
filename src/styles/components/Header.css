@@ -1,7 +1,7 @@
 .main-header {
     padding: 40px;
-    padding-top: 40px;
-    padding-bottom: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     background-color: #1a1a1a30;
     backdrop-filter: blur(2.5px);
     display: flex;
@@ -19,6 +19,7 @@
     font-size: large;
     color: #FFFFFF;
     letter-spacing: 5px;
+    margin-right: 40px;
 }
 
 
@@ -26,16 +27,17 @@
     display: flex;
     flex-direction: row;
     font-family: 'Poppins', sans-serif;
+    justify-content: space-between;
 }
 
 .main-header > nav > div.navitem {
     padding: 10px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin-left: 5px;
-    margin-right: 5px;
-    border-radius: 30px;
+    padding-left: 5px;
+    padding-right: 5px;
     color: #FFFFFF;
     font-weight: 600;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

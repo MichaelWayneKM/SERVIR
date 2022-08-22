@@ -11,7 +11,7 @@
 }
 
 #intro-agent-container {
-    max-width: 600px;
+    max-width: 500px;
     margin-left: 20px;
     margin-top: 60px;
     position: absolute;
@@ -20,6 +20,7 @@
     padding: 10px;
     border-radius: 20px;
     right: 10px;
+    top: 120px;
     opacity: 1;
     
 }
@@ -28,7 +29,7 @@
 
 #intro-agent-container h5{
     font-family: "Poppins", sans-serif;
-    font-size: 35px;
+    font-size: 28px;
     margin-bottom: 10px;
     color: #FFFFFF;
 
@@ -36,7 +37,7 @@
 
 #intro-agent-container p{
     font-family: "Poppins", sans-serif;
-    font-size: 25px;
+    font-size: 22px;
     color: #FFFFFF;
 
 }

@@ -1,9 +1,13 @@
-import React from 'react';
-import Home from './screens/Home';
+import React from "react";
+import Sidebar from "./components/Sidebar";
+import Home from "./screens/Home";
 
 function App() {
   return (
-    <Home />
+    <>
+      <Home />
+      <Sidebar />
+    </>
   );
 }
 
