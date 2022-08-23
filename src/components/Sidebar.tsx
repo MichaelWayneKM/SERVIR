@@ -1,24 +1,28 @@
 import { Button, Drawer, SwipeableDrawer } from "@mui/material";
+import "../styles/components/Sidebar.css";
 import React from "react";
-const anchor = "bottom";
+import Hamburger from "hamburger-react";
+import { HamburgerMenu } from "./Header";
 
 function Sidebar() {
-
   const [open, setOpen] = React.useState(false);
-  return (
-    <React.Fragment key={anchor}>
-      <Button onClick={() => setOpen(!open)}>{anchor}</Button>
-      <SwipeableDrawer
-        anchor={anchor}
 
-        open={open}
-        onClose={() => null}
-        onOpen={() => null}
-      >
-        {/* {"Hello 1 loremkk wfnkweofe ejekfne fefke fefe e eke ewfwefgw Hello 1 loremkk wfnkweofe ejekfne fefke fefe e eke ewfwefgw"} */}
-      </SwipeableDrawer>
-    </React.Fragment>
-  )
+  return (
+    <div className="sidebar open">
+      <HamburgerMenu color="#212121" my={20} mx={20}/>
+
+      <nav>
+        <div className="navitem">Home</div>
+        <div className="navitem">ABOUT SERVIR</div>
+        <div className="navitem">NEWS & EVENTS</div>
+        <div className="navitem">SERVICE AREAS</div>
+        <div className="navitem">GRANTS</div>
+        <div className="navitem">OPEN DAY</div>
+        <div className="navitem">MEDIA</div>
+        <div className="navitem">CONTACT US</div>
+      </nav>
+    </div>
+  );
 }
 
 export default Sidebar;
