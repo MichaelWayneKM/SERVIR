@@ -3,15 +3,18 @@ import "../styles/components/Sidebar.css";
 import React from "react";
 import Hamburger from "hamburger-react";
 import { HamburgerMenu } from "./Header";
+import { RootState } from "../core/redux/store";
+import { useSelector } from "react-redux";
 
 function Sidebar() {
-  const [open, setOpen] = React.useState(false);
+  
+  const state = useSelector((state: RootState) => state.globalState);
 
   return (
-    <div className="sidebar open">
-      <HamburgerMenu color="#212121" my={20} mx={20}/>
-
+    <div className={`sidebar ${state.sidebarActive ? 'open' : 'closed'}`}>
+      <div></div>
       <nav>
+        <HamburgerMenu keyID="sm-hamburger-menu" color="#212121" my={20} mx={20} />
         <div className="navitem">Home</div>
         <div className="navitem">ABOUT SERVIR</div>
         <div className="navitem">NEWS & EVENTS</div>

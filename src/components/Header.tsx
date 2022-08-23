@@ -2,13 +2,16 @@ import React, { useState } from "react";
 import "../styles/components/Header.css";
 import { Sling as Hamburger } from "hamburger-react";
 import { toggleSideBar } from "../core/redux/slices/globalState";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../core/redux/store";
 
 export const HamburgerMenu = ({
+  keyID,
   mx = 0,
   my = 0,
   color = "white",
 }: {
+  keyID: string;
   mx?: number;
   my?: number;
   color?: string;
@@ -16,23 +19,26 @@ export const HamburgerMenu = ({
   const [isHamburgerOpen, setOpen] = useState<boolean>(false);
 
   const dispatch = useDispatch();
+  const state = useSelector((state: RootState) => state.globalState);
 
-  React.useEffect(() => {
-    dispatch(toggleSideBar());
-  }, [isHamburgerOpen]);
+  
 
   return (
     <div
+      id={keyID}
       style={{
         position: "absolute",
         right: mx,
         top: my,
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <Hamburger
         color={color}
-        toggled={isHamburgerOpen}
-        toggle={() => setOpen(!isHamburgerOpen)}
+        toggled={state.sidebarActive}
+        toggle={() => dispatch(toggleSideBar())}
       />
     </div>
   );
@@ -49,7 +55,7 @@ function Header() {
         </div>
       </div>
 
-      <HamburgerMenu my={20} />
+      <HamburgerMenu keyID="lg-hamburger" my={20} mx={20}/>
       <nav>
         <div className="navitem">Home</div>
         <div className="navitem">ABOUT SERVIR</div>
