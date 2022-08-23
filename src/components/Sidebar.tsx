@@ -1,15 +1,17 @@
 import { Button, Drawer, SwipeableDrawer } from "@mui/material";
 import React from "react";
-const anchor = "right";
+const anchor = "bottom";
 
 function Sidebar() {
+
+  const [open, setOpen] = React.useState(false);
   return (
     <React.Fragment key={anchor}>
-      <Button>{anchor}</Button>
+      <Button onClick={() => setOpen(!open)}>{anchor}</Button>
       <SwipeableDrawer
         anchor={anchor}
 
-        open={false}
+        open={open}
         onClose={() => null}
         onOpen={() => null}
       >

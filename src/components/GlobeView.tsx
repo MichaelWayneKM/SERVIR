@@ -8,6 +8,7 @@ import React, {
 
 import Globe from "react-globe.gl";
 import { useDispatch, useSelector } from "react-redux";
+import { SizeMe } from "react-sizeme";
 import * as THREE from "three";
 import {
   globeStateSlector,
@@ -20,6 +21,8 @@ function GlobeView() {
   const [hover, setHover] = useState<null | boolean>();
   const [rotation, setRotation] = useState(true);
 
+  const [width, setWidth] = useState<number>(window.innerWidth);
+
   const { mapActive } = useSelector(globeStateSlector);
   const dispatch = useDispatch();
 
@@ -31,6 +34,10 @@ function GlobeView() {
       .then((countries) => {
         setCountries(countries);
       });
+
+    window.addEventListener("resize", (e) => {
+      setWidth(window.innerWidth);
+    });
   }, []);
 
   useEffect(() => {
@@ -104,6 +111,11 @@ function GlobeView() {
     return globeMaterialTemp;
   }, []);
 
+
+  useEffect(() => {
+
+  })
+
   /* 
       Configure pointers
   */
@@ -133,6 +145,7 @@ function GlobeView() {
   return (
     <Globe
       ref={globeEl}
+      width={width}
       globeImageUrl="/assets/earth-large.jpg"
       // bumpImageUrl="/bump-large.jpg"
       globeMaterial={globeMaterial}

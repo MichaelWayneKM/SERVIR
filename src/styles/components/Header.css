@@ -2,8 +2,9 @@
     padding: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
-    background-color: #1a1a1a30;
-    backdrop-filter: blur(2.5px);
+    padding-left: 20px;
+    background-color: #1a1a1a;
+    /* backdrop-filter: blur(2.5px); */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -16,12 +17,29 @@
 
 .main-header .header-title {
     font-family: 'Orbitron', sans-serif;
-    font-size: large;
+    font-size: larger;
     color: #FFFFFF;
     letter-spacing: 5px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     margin-right: 40px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
 }
 
+.main-header .header-title div:nth-child(2) {
+    font-size: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.main-header .header-title div:nth-child(2) span {
+    font-size: 12px;
+}
 
 .main-header > nav{
     display: flex;
@@ -34,10 +52,27 @@
     padding: 10px;
     padding-left: 5px;
     padding-right: 5px;
+    margin: 10px;
     color: #FFFFFF;
     font-weight: 600;
+    font-size: 17px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 2px solid rgba(255, 0, 0, 0);
+    transition: 0.5s;
+}
+
+.main-header > nav > div.navitem:hover {
+    border-bottom: 2px solid red;
+    transform: scale(1.1);
+}
+
+
+@media (max-width:1000px) {
+    .main-header > nav > div.navitem {
+        display: none;
+    }
+
 }

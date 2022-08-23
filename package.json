@@ -27,6 +27,7 @@
     "react-lottie": "^1.2.3",
     "react-redux": "^8.0.2",
     "react-scripts": "5.0.1",
+    "react-sizeme": "^3.0.2",
     "recompose": "^0.30.0",
     "styled-components": "^5.3.5",
     "three": "^0.143.0",

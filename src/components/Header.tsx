@@ -1,10 +1,17 @@
 import React from "react";
-import "../styles/components/Header.css"
+import "../styles/components/Header.css";
 
 function Header() {
   return (
     <div className="main-header">
-      <div className="header-title">SERVIR</div>
+      <div className="header-title">
+        <div>SERVIR</div>
+        <div>
+          <div>Eastern and Southern</div>
+          <span>AFRICA</span>
+        </div>
+      </div>
+
       <nav>
         <div className="navitem">Home</div>
         <div className="navitem">ABOUT SERVIR</div>

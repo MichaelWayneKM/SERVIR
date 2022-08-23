@@ -9,6 +9,7 @@ import styled, { keyframes } from "styled-components";
 import { fadeInRight } from "react-animations";
 import { useSelector } from "react-redux";
 import { globeStateSlector } from "../core/redux/slices/globe_mode_reducer";
+import { SizeMe } from "react-sizeme";
 
 const fadeInAnimation = keyframes`${fadeInRight}`;
 function DisplayHome() {
@@ -17,7 +18,12 @@ function DisplayHome() {
   return (
     <div id="main-home-display">
       <div id="temp-agent" className="webgl-container">
+      <SizeMe>
+      {({ size: { width } }) => (
         <GlobeView />
+      )}
+      </SizeMe>
+        
 
         <div id="globe-view-lambert">
           {mapActive ? (
