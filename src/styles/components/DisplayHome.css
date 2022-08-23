@@ -18,9 +18,10 @@
     background-color: #1a1a1a90;
     pointer-events: all;
     padding: 10px;
-    border-radius: 20px;
+    border-radius: 10px;
+    text-align: center;
     right: 10px;
-    top: 120px;
+    bottom: 20px;
     opacity: 1;
     
 }
@@ -39,7 +40,7 @@
     font-family: "Poppins", sans-serif;
     font-size: 22px;
     color: #FFFFFF;
-
+    text-align: unset;
 }
 
 #intro-agent-container button#disp-hm-more-about-servir-btn {
@@ -61,4 +62,19 @@
 
 #intro-agent-container button#disp-hm-more-about-servir-btn:hover {
     background-color: cadetblue;
+}
+
+/* Medium Device (Tablet) */
+@media (max-width:1000px) {
+  
+}
+/* Small Device (PHONE) */
+@media (max-width:600px) {
+    #intro-agent-container h5 {
+        font-size: 18px;
+    }
+
+    #intro-agent-container p {
+        font-size: 15px;
+    }
 }

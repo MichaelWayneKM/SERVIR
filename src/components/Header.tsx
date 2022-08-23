@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/components/Header.css";
+import { Sling as Hamburger } from 'hamburger-react'
 
 function Header() {
+
+  const [isOpen, setOpen] = useState<boolean>(false)
+
   return (
     <div className="main-header">
       <div className="header-title">
@@ -12,6 +16,15 @@ function Header() {
         </div>
       </div>
 
+      
+
+      <div style={{
+        position: 'absolute',
+        right: 20
+      }}>
+
+      <Hamburger color="white" toggled={isOpen} toggle={() => setOpen(!isOpen)} />
+      </div>
       <nav>
         <div className="navitem">Home</div>
         <div className="navitem">ABOUT SERVIR</div>

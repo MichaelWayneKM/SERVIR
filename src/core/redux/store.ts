@@ -1,12 +1,14 @@
 import {configureStore} from '@reduxjs/toolkit';
 import counterReducer from './slices/counter';
 import mapStateReducer from './slices/globe_mode_reducer';
-
+import globalState from './slices/globalState'
 
 const store = configureStore({
   reducer: {
     counter: counterReducer,
-    mapActivityState: mapStateReducer
+    mapActivityState: mapStateReducer,
+    globalState, // global state
+
   },
 });
 
