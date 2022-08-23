@@ -28,6 +28,7 @@
     "react-google-maps": "^9.4.5",
     "react-lottie": "^1.2.3",
     "react-redux": "^8.0.2",
+    "react-responsive-picture": "^3.2.2",
     "react-scripts": "5.0.1",
     "react-sizeme": "^3.0.2",
     "recompose": "^0.30.0",

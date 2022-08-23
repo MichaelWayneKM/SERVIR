@@ -45,8 +45,23 @@ export const HamburgerMenu = ({
 };
 
 function Header() {
+
+  const [headerPadding, setHeaderPadding] = useState(0);
+
+  React.useEffect(() => {
+    window.addEventListener("scroll", () => {
+      console.log(window.scrollY)
+      if (window.scrollY <= 0) {
+        setHeaderPadding(0);
+      } else {
+        if (headerPadding != 80) {
+          setHeaderPadding(80);
+        }
+      }
+    })
+  }, [])
   return (
-    <div className="main-header">
+    <div className={`main-header`} style={{ position: `${headerPadding >= 80 ? "fixed" : "relative"}` }}>
       <div className="header-title">
         <div>SERVIR</div>
         <div>
@@ -55,7 +70,7 @@ function Header() {
         </div>
       </div>
 
-      <HamburgerMenu keyID="lg-hamburger" my={20} mx={20}/>
+      <HamburgerMenu keyID="lg-hamburger-menu" my={25} mx={20}/>
       <nav>
         <div className="navitem">Home</div>
         <div className="navitem">ABOUT SERVIR</div>

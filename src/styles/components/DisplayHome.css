@@ -1,8 +1,9 @@
 #temp-agent #globe-view-lambert {
     position: absolute;
-    height: 100%;
+    height: 100vh;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.164);
+    background-color: rgba(255, 255, 255, 0);
+    overflow: hidden;
     pointer-events: none; /* Clickthrough events */
     padding-top: 180px;
     z-index: 2;

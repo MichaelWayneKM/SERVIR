@@ -66,7 +66,7 @@ function GlobeView() {
 
   useEffect(() => {
     globeEl.current.controls().autoRotate = true;
-    globeEl.current.controls().autoRotateSpeed = -0.1;
+    globeEl.current.controls().autoRotateSpeed = -0.8;
 
     globeEl.current.pointOfView(
       { altitude: 1, lat: 1.2212, lng: 36.8941 },
