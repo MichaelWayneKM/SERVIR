@@ -111,10 +111,7 @@ function GlobeView() {
     return globeMaterialTemp;
   }, []);
 
-
-  useEffect(() => {
-
-  })
+  useEffect(() => {});
 
   /* 
       Configure pointers

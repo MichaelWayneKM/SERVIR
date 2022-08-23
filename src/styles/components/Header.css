@@ -3,8 +3,8 @@
     padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 20px;
-    background-color: #1a1a1a;
-    /* backdrop-filter: blur(2.5px); */
+    background-color: #1a1a1a30;
+    backdrop-filter: blur(2.5px);
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -26,7 +26,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-
+    min-width: 200px;
+    
 }
 
 .main-header .header-title div:nth-child(2) {
@@ -35,6 +36,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
+    
 }
 
 .main-header .header-title div:nth-child(2) span {
@@ -55,12 +57,13 @@
     margin: 10px;
     color: #FFFFFF;
     font-weight: 600;
-    font-size: 17px;
+    font-size: 15px;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
     border-bottom: 2px solid rgba(255, 0, 0, 0);
+    text-align: center;
     transition: 0.5s;
 }
 
@@ -69,10 +72,14 @@
     transform: scale(1.1);
 }
 
-
+/* Medium Device (Tablet) */
 @media (max-width:1000px) {
     .main-header > nav > div.navitem {
         display: none;
     }
 
+}
+/* Small Device (PHONE) */
+@media (max-width:1000px) {
+   
 }

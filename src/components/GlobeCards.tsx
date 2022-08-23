@@ -13,7 +13,7 @@ export default function GlobeCard() {
   const dispatch = useDispatch()
 
   return (
-    <Card sx={{ maxWidth: 345, marginLeft: 20, pointerEvents: 'all' }}>
+    <Card sx={{ maxWidth: 345, marginLeft: 2, marginRight: 2, marginTop: 20, pointerEvents: 'all' }}>
       <CardMedia
         component="img"
         height="140"

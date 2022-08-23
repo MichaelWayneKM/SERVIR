@@ -18,12 +18,7 @@ function DisplayHome() {
   return (
     <div id="main-home-display">
       <div id="temp-agent" className="webgl-container">
-      <SizeMe>
-      {({ size: { width } }) => (
         <GlobeView />
-      )}
-      </SizeMe>
-        
 
         <div id="globe-view-lambert">
           {mapActive ? (
