@@ -72,10 +72,17 @@
     transform: scale(1.1);
 }
 
+.hamburger-react {
+    display: none;
+}
 /* Medium Device (Tablet) */
 @media (max-width:1000px) {
     .main-header > nav > div.navitem {
         display: none;
+    }
+
+    .hamburger-react {
+        display: inline-block;
     }
 
 }

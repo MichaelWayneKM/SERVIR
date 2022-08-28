@@ -2,27 +2,30 @@
   background-color: rgba(0, 13, 56, 0.377);
   height: 100vh;
   overflow: hidden;
-  position: absolute;
+  position: fixed;
   top: 0;
   right: 0;
   z-index: 12;
   backdrop-filter: blur(1px);
   transition: 0.5s;
+
 }
 
 .sidebar.open {
   width: 100%;
   display: flex;
+  visibility: visible;
 }
 
 .sidebar.closed {
   width: 0%;
+  visibility: hidden;
   /* display: none; */
 }
 
 
 .sidebar nav {
-  position: absolute;
+  position: fixed;
   right: 0;
   background-color: rgb(255, 255, 255);
   width: 100%;

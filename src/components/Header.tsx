@@ -51,17 +51,17 @@ function Header() {
   React.useEffect(() => {
     window.addEventListener("scroll", () => {
       console.log(window.scrollY)
-      if (window.scrollY <= 0) {
+      if (window.scrollY < 100) {
         setHeaderPadding(0);
       } else {
-        if (headerPadding != 80) {
-          setHeaderPadding(80);
+        if (headerPadding != 100) {
+          setHeaderPadding(100);
         }
       }
     })
   }, [])
   return (
-    <div className={`main-header`} style={{ position: `${headerPadding >= 80 ? "fixed" : "relative"}` }}>
+    <div className={`main-header`} style={{ position: `${headerPadding >= 100 ? "fixed" : "relative"}` }}>
       <div className="header-title">
         <div>SERVIR</div>
         <div>

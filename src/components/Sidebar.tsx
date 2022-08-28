@@ -11,7 +11,7 @@ function Sidebar() {
   const state = useSelector((state: RootState) => state.globalState);
 
   return (
-    <div className={`sidebar ${state.sidebarActive ? 'open' : 'closed'}`}>
+    <div className={`sidebar ${state.sidebarActive ? 'open' : 'closed'}`} style={{ width: `${state.sidebarActive ? "100%" : "0%"}`}}>
       <div></div>
       <nav>
         <HamburgerMenu keyID="sm-hamburger-menu" color="#212121" my={20} mx={20} />

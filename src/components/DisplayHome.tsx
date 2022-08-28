@@ -26,7 +26,7 @@ function DisplayHome() {
               <GlobeCard />
             </Card>
           ) : (
-            <Card id="intro-agent-container">
+            <div id="intro-agent-container">
               <h5>Connecting Space to Village</h5>
               <p>
                 SERVIR is helping countries in Eastern and Southern Africa
@@ -38,7 +38,7 @@ function DisplayHome() {
               <button id="disp-hm-more-about-servir-btn">
                 More about SERVIR
               </button>
-            </Card>
+            </div>
           )}
         </div>
       </div>
