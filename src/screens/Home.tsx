@@ -8,9 +8,9 @@ function Home() {
   return (
     <div id="home" className="container">
       
-      <Header />
+      
       <DisplayHome />
-      <div style={{ height: 2000}} />
+      <Carousel />
     </div>
   );
 }

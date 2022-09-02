@@ -1,5 +1,8 @@
 import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
+import About from "./screens/About";
 import Home from "./screens/Home";
 
 function App() {
@@ -33,9 +36,13 @@ function App() {
         />
       </div>
 
-      <Home />
-
+      <Header />
       <Sidebar />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="about" element={<About />} />
+      </Routes>
     </>
   );
 }

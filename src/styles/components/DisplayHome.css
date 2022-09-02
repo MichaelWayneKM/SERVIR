@@ -73,7 +73,13 @@
 
 /* Medium Device (Tablet) */
 @media (max-width:1000px) {
-  
+    #intro-agent-container h5 {
+        font-size: 18px;
+    }
+
+    #intro-agent-container p {
+        font-size: 15px;
+    }
 }
 /* Small Device (PHONE) */
 @media (max-width:600px) {

@@ -4,7 +4,18 @@
   box-sizing: border-box;
 }
 
-html {
+html, body {
   max-width: 100vw;
+  min-width: 350px;
   overflow-x: hidden;
+}
+
+#section-title {
+  background: linear-gradient(to right, rgb(25, 24, 43), darkblue);
+  font-family: 'Poppins', sans-serif;
+  margin-left: 20px;
+  margin-top: 50px;
+  background-clip: text;
+  max-width: 250px;
+  color: transparent;
 }

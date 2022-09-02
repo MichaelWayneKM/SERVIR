@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/components/Header.css";
 import { Sling as Hamburger } from "hamburger-react";
 import { toggleSideBar } from "../core/redux/slices/globalState";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../core/redux/store";
+import { Link, useLocation } from "react-router-dom";
 
 export const HamburgerMenu = ({
   keyID,
@@ -47,7 +48,11 @@ export const HamburgerMenu = ({
 function Header() {
 
   const [headerPadding, setHeaderPadding] = useState(0);
+  const location = useLocation();
 
+  useEffect(() => {
+    console.log(location)
+  }, [location])
   React.useEffect(() => {
     window.addEventListener("scroll", () => {
       console.log(window.scrollY)
@@ -72,9 +77,10 @@ function Header() {
 
       <HamburgerMenu keyID="lg-hamburger-menu" my={25} mx={20}/>
       <nav>
-        <div className="navitem">Home</div>
-        <div className="navitem">ABOUT SERVIR</div>
-        <div className="navitem">NEWS & EVENTS</div>
+        
+        <div className="navitem"><Link id="nav-link" className={"active"} to="/">Home</Link></div>
+        <div className="navitem"><Link id="nav-link" to="/about">ABOUT SERVIR</Link></div>
+        <div className="navitem"><Link id="nav-link" to="/events">NEWS & EVENTS</Link></div>
         <div className="navitem">SERVICE AREAS</div>
         <div className="navitem">GRANTS</div>
         <div className="navitem">OPEN DAY</div>
