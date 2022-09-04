@@ -1,0 +1,29 @@
+#home {
+    margin: 0px;
+    padding: 0;
+    width: 100%;
+}
+
+#section-body-serviceAreas {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 40px;
+    flex-wrap: wrap;
+}
+
+#section-body-serviceAreas > div {
+    flex: 1;
+    height: 250px;
+    margin-bottom: 20px;
+    max-width: 350px;
+    min-width: 350px;
+    border: 1px solid white;
+    box-shadow: 9px 9px 5px #da7f3a77;
+}
+
+#section-body-serviceAreas > div > img {
+    width: 100%;
+    height: 100%;
+}

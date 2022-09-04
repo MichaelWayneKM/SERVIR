@@ -20,7 +20,7 @@
     text-decoration: none;
 }
 .main-header #nav-link.active {
-    color: rgb(16, 180, 221);
+    color: #da803a;
     text-decoration: none;
 }
 
@@ -77,7 +77,7 @@
 }
 
 .main-header > nav > div.navitem:hover {
-    border-bottom: 2px solid rgb(61, 252, 252);
+    border-bottom: 2px solid #da803a;
     transform: scale(1.1);
 }
 

@@ -10,6 +10,7 @@ import { fadeInRight } from "react-animations";
 import { useSelector } from "react-redux";
 import { globeStateSlector } from "../core/redux/slices/globe_mode_reducer";
 import { SizeMe } from "react-sizeme";
+import { Button } from "@mui/material";
 
 const fadeInAnimation = keyframes`${fadeInRight}`;
 function DisplayHome() {
@@ -35,9 +36,9 @@ function DisplayHome() {
                 and resilience to climate change
               </p>
 
-              <button id="disp-hm-more-about-servir-btn">
+              <Button id="disp-hm-more-about-servir-btn" variant="contained" >
                 More about SERVIR
-              </button>
+              </Button>
             </div>
           )}
         </div>

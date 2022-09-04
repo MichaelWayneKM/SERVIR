@@ -63,7 +63,7 @@
 }
 
 .sidebar nav > div.navitem:hover {
-  background-color: lightblue;
+  background-color: #da803a;
   transform: skew(10deg, 0deg);
   outline: 1px solid rgba(0, 0, 0, 0.411);
   color: azure;

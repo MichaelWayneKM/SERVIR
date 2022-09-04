@@ -20,6 +20,7 @@
     "@types/recompose": "^0.30.10",
     "google-map-react": "^2.2.0",
     "hamburger-react": "^2.5.0",
+    "mdb-react-ui-kit": "^4.2.0",
     "react": "^18.2.0",
     "react-animated-carousel": "^1.6.5",
     "react-animations": "^1.0.0",
