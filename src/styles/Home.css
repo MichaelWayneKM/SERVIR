@@ -11,19 +11,108 @@
     margin-right: 20px;
     margin-top: 40px;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 #section-body-serviceAreas > div {
     flex: 1;
-    height: 250px;
+    /* height: 250px; */
     margin-bottom: 20px;
-    max-width: 350px;
+    width: 100%;
     min-width: 350px;
     border: 1px solid white;
-    box-shadow: 9px 9px 5px #da7f3a77;
+    overflow: hidden;
+    position: relative;
 }
+
+
+#section-body-serviceAreas > div > .sa-ca-label {
+    height: 100%;
+    width: 100%;
+    background-color: #da7f3a2a;
+    pointer-events: none;
+    font-size: 32px;
+    font-weight: 800;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+    color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
 
 #section-body-serviceAreas > div > img {
     width: 100%;
     height: 100%;
+    transition: 0.5s;
+}
+
+#section-body-serviceAreas > div > img:hover {
+    transform: scale(1.2);
+}
+
+#newsOverviewHome {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#newsOverviewHome > div {
+    flex: 1;
+    min-width: 350px;
+    min-height: 350px;
+    margin: 5px;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#newsOverviewHome > div.news {
+    border: 5px solid #da7f3a2a;
+    border-radius: 10px;
+    position: relative;
+    background: url(https://rcmrd.org/images/headers/Servir_Logo_Full_Color_Africa_Large.png);
+    background-repeat: no-repeat;
+    background-size: 70%;
+    background-position: center center;
+    padding-top: 10px;
+}
+
+.news-item-home {
+    margin-left: 28px;
+    margin-right: 58px;
+    margin-top: 25px;
+    background-color: rgba(255, 255, 255, 0.363);
+    border: 3px solid rgb(241, 241, 241);
+    backdrop-filter: blur(5px);
+    padding-top: 16px;
+    padding-bottom: 20px;
+    border-radius: 32px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.news-item-home > img {
+    width: 96%;
+    margin-left: 2%;
+    margin-right: 2%;
+    margin-bottom: 10px;
+    border-radius: 30px;
+
+}
+
+.news-item-home > h3 {
+    margin-right: 5px;
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+.news-item-home #specifics-news-item a {
+    margin-left: 10px;
+    color: red;
 }
