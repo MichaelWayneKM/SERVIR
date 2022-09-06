@@ -67,7 +67,6 @@
     min-width: 350px;
     min-height: 350px;
     margin: 5px;
-    margin-top: 50px;
     margin-left: 20px;
     margin-right: 20px;
 }
@@ -81,13 +80,14 @@
     background-size: 70%;
     background-position: center center;
     padding-top: 10px;
+    margin-bottom: 40px;
+    margin-top: 50px;
 }
 
 .news-item-home {
     margin-left: 28px;
     margin-right: 58px;
     margin-top: 25px;
-    background-color: rgba(255, 255, 255, 0.363);
     border: 3px solid rgb(241, 241, 241);
     backdrop-filter: blur(5px);
     padding-top: 16px;
@@ -115,4 +115,46 @@
 .news-item-home #specifics-news-item a {
     margin-left: 10px;
     color: red;
+}
+
+
+.upcoming {
+    padding-top: 20px;
+}
+
+.event-item {
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 30px;
+    padding-bottom: 30px;
+}
+
+.event-item > .dateHolder {
+    display: flex;
+    align-items: flex-end;
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+}
+
+.event-item > .dateHolder #day {
+    font-size: 34px;
+    font-weight: bolder;
+    margin-right: 15px;
+    color: #da7f3a;
+    position: relative;
+    top: 11px;
+}
+
+.event-item > .dateHolder #month-yr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.event-item > .dateHolder #month-yr #month {
+    letter-spacing: 2px;
+}
+
+.event-item > .dateHolder #month-yr #year {
+    font-size: 9px;
 }
