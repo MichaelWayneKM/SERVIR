@@ -15,9 +15,31 @@ import {
   mapZoomActive,
 } from "../core/redux/slices/globe_mode_reducer";
 
+import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
+
+type LatLngTuple = number[];
+function MapComponent() {
+  const position: any = [1.2212, 36.8941];
+
+  return (
+    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
+      <TileLayer
+        //attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"  
+        url="url='https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'"
+      />
+      <Marker position={position}>
+        <Popup>
+          A pretty CSS3 popup. <br /> Easily customizable.
+        </Popup>
+      </Marker>
+    </MapContainer>
+  );
+}
+
 function GlobeView() {
-  const globeEl = useRef<any>();
-  const [countries, setCountries] = useState({ features: [] });
+  /*const globeEl = useRef<any>();
+  const [countries, setCountries] = useState(require("../assets/json/globe.json"));
   const [hover, setHover] = useState<null | boolean>();
   const [rotation, setRotation] = useState(true);
 
@@ -27,17 +49,15 @@ function GlobeView() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    fetch(
-      "https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson"
-    )
-      .then((res) => res.json())
-      .then((countries) => {
-        setCountries(countries);
-      });
-
     window.addEventListener("resize", (e) => {
       setWidth(window.innerWidth);
     });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        //console.log("")
+      });
+    }
   }, []);
 
   useEffect(() => {
@@ -88,7 +108,7 @@ function GlobeView() {
     }
   }, [mapActive]);
 
-  const onHoverHandler = useCallback((polygon: any) => {
+  const onHoverHandler = useCallback(async (polygon: any) => {
     if (polygon !== null) {
       setHover(polygon.properties.ISO_A3);
       // setRotation(false);
@@ -104,18 +124,19 @@ function GlobeView() {
     const globeMaterialTemp = new THREE.MeshPhongMaterial();
     globeMaterialTemp.bumpScale = 10;
 
-    new THREE.TextureLoader().load("/assets/bump-large.jpg", (texture) => {
-      globeMaterial.bumpMap = texture;
-    });
+    new THREE.TextureLoader().load(
+      "/assets/bump-large.jpg",
+      async (texture) => {
+        globeMaterial.bumpMap = texture;
+      }
+    );
 
     return globeMaterialTemp;
   }, []);
 
   useEffect(() => {});
 
-  /* 
-      Configure pointers
-  */
+  
 
   const markerSvg = `
   <div>
@@ -128,7 +149,8 @@ function GlobeView() {
 
   // Gen random data
   const N = 1;
-  const gData = [...(Array(N) as any).keys()].map(() => ({
+  const gData = [...(Array(N) as any).keys()].map(async () => ({
+    // Async performance Throttle
     //lat: (Math.random() - 0.5) * 180,
     //lng: (Math.random() - 0.5) * 360,1.2212° S, 36.8941° E
     lat: 1.2212,
@@ -137,49 +159,53 @@ function GlobeView() {
     color: `rgba(${Math.random() * 156}, ${Math.random() * 16}, ${
       Math.random() * 56
     }, 1)`, // ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
-  }));
+  })); */
 
   return (
-    <Globe
-      ref={globeEl}
-      width={width}
-      globeImageUrl="/assets/earth-large.jpg"
-      // bumpImageUrl="/bump-large.jpg"
-      globeMaterial={globeMaterial}
-      polygonsData={countries.features.filter(
-        (d: any) => d.properties.ISO_A2 !== "AQ"
-      )}
-      polygonAltitude={0.01}
-      polygonCapColor={(d: any) =>
-        d.properties.ISO_A3 === hover
-          ? "rgba(255, 255,255, 0.3)"
-          : "rgba(255, 255,255, 0)"
-      }
-      polygonSideColor={() => "rgba(255, 255, 255, 0)"}
-      polygonStrokeColor={() => "rgba(255, 255, 255, 0.5)"}
-      onPolygonHover={onHoverHandler}
-      htmlElementsData={gData}
-      htmlElement={(d: any) => {
-        const el = document.createElement("div");
-        el.innerHTML = markerSvg;
-        el.style.color = d.color;
-        el.style.width = `${d.size}px`;
+    // <Globe
+    //   ref={globeEl}
+    //   width={width}
+    //   globeImageUrl="/assets/earth-large.jpg"
+    //   // bumpImageUrl="/bump-large.jpg"
+    //   globeMaterial={globeMaterial}
+    //   //polygonsData={countries.features}
+    //    polygonsData={countries.features.filter(
+    //      (d: any) => d.properties.CONTINENT == "Africa"
+    //    )}
+    //   polygonAltitude={0.01}
+    //   polygonCapColor={(d: any) =>
+    //     d.properties.ISO_A3 === hover
+    //       ? "rgba(255, 255,255, 0.3)"
+    //       : "rgba(255, 255,255, 0)"
+    //   }
+    //   polygonSideColor={() => "rgba(255, 255, 255, 0)"}
+    //   polygonStrokeColor={() => "rgba(255, 255, 255, 0.5)"}
+    //   onPolygonHover={onHoverHandler}
+    //   htmlElementsData={gData}
+    //   htmlElement={(d: any) => {
+    //     const el = document.createElement("div");
+    //     el.innerHTML = markerSvg;
+    //     el.style.color = d.color;
+    //     el.style.width = `${d.size}px`;
 
-        el.style["pointer-events" as any] = "auto";
-        el.style.cursor = "pointer";
-        el.onclick = () => {
-          console.info(d);
-          globeEl.current.pointOfView(
-            { altitude: 0.05, lat: d.lat, lng: d.lng },
-            2000
-          );
-          dispatch(mapZoomActive());
-        };
+    //     el.style["pointer-events" as any] = "auto";
+    //     el.style.cursor = "pointer";
+    //     el.onclick = async () => {
+    //       console.info(d);
+    //       globeEl.current.pointOfView(
+    //         { altitude: 0.05, lat: d.lat, lng: d.lng },
+    //         2000
+    //       );
+    //       dispatch(mapZoomActive());
+    //     };
 
-        return el;
-      }}
-    />
+    //     return el;
+    //   }}
+    // />
+    <div className="leaflet-container">
+      <MapComponent />
+    </div>
   );
 }
 
-export default GlobeView;
+export default React.memo(GlobeView);

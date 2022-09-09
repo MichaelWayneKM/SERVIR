@@ -26,4 +26,4 @@ function ServiceComponents() {
   );
 }
 
-export default ServiceComponents;
+export default React.memo(ServiceComponents);

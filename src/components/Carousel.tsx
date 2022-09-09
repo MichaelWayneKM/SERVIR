@@ -67,4 +67,4 @@ function CarouselDisplay() {
   );
 }
 
-export default CarouselDisplay;
+export default React.memo(CarouselDisplay);

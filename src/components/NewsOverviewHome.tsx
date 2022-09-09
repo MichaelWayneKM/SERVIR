@@ -65,4 +65,4 @@ function NewsOverviewHome() {
   );
 }
 
-export default NewsOverviewHome;
+export default React.memo(NewsOverviewHome);

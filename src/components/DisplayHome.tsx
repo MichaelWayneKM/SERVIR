@@ -24,7 +24,7 @@ function DisplayHome() {
         <div id="globe-view-lambert">
           {mapActive ? (
             <Card>
-              <GlobeCard />
+              {/* <GlobeCard /> */}
             </Card>
           ) : (
             <div id="intro-agent-container">
@@ -49,7 +49,7 @@ function DisplayHome() {
   );
 }
 
-export default DisplayHome;
+export default React.memo(DisplayHome);
 
 const Card = styled.div`
   animation: 5s ${fadeInAnimation};

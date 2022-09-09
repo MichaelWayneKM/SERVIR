@@ -37,7 +37,7 @@ function App() {
         />
       </div>
 
-      <Header />
+      {/* <Header /> */}
       <Sidebar />
 
       <Routes>

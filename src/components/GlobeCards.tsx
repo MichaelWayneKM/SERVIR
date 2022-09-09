@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import { mapZoomDisable } from '../core/redux/slices/globe_mode_reducer';
 import { useDispatch } from 'react-redux';
 
-export default function GlobeCard() {
+function GlobeCard() {
 
   const dispatch = useDispatch()
 
@@ -35,3 +35,5 @@ export default function GlobeCard() {
     </Card>
   );
 }
+
+export default React.memo(GlobeCard)
