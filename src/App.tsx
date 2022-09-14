@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
+import { Footer } from "./components/Footer";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 import About from "./screens/About";
@@ -43,6 +44,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
       </Routes>
+
+      <Footer />
     </>
   );
 }

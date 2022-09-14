@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "react-animated-carousel";
 import Globe from "react-globe.gl";
 import GlobeView from "./GlobeView";
@@ -10,11 +10,14 @@ import { fadeInRight } from "react-animations";
 import { useSelector } from "react-redux";
 import { globeStateSlector } from "../core/redux/slices/globe_mode_reducer";
 import { SizeMe } from "react-sizeme";
+import { Button } from "@mui/material";
 
 const fadeInAnimation = keyframes`${fadeInRight}`;
 function DisplayHome() {
   const { mapActive } = useSelector(globeStateSlector);
 
+  const [mounted, setDismount] = useState(false);
+  
   return (
     <div id="main-home-display">
       <div id="temp-agent" className="webgl-container">
@@ -23,7 +26,7 @@ function DisplayHome() {
         <div id="globe-view-lambert">
           {mapActive ? (
             <Card>
-              <GlobeCard />
+              {/* <GlobeCard /> */}
             </Card>
           ) : (
             <div id="intro-agent-container">
@@ -35,9 +38,9 @@ function DisplayHome() {
                 and resilience to climate change
               </p>
 
-              <button id="disp-hm-more-about-servir-btn">
+              <Button id="disp-hm-more-about-servir-btn" variant="contained" >
                 More about SERVIR
-              </button>
+              </Button>
             </div>
           )}
         </div>
@@ -48,7 +51,7 @@ function DisplayHome() {
   );
 }
 
-export default DisplayHome;
+export default React.memo(DisplayHome);
 
 const Card = styled.div`
   animation: 5s ${fadeInAnimation};

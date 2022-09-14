@@ -4,18 +4,31 @@
   box-sizing: border-box;
 }
 
+*::selection {
+  background-color: #da7f3a40;
+}
+
 html, body {
+  width: 100%;
   max-width: 100vw;
   min-width: 350px;
   overflow-x: hidden;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
+
 #section-title {
-  background: linear-gradient(to right, rgb(25, 24, 43), darkblue);
+  background: linear-gradient(to bottom right, rgb(25, 24, 43), #da803a);
   font-family: 'Poppins', sans-serif;
   margin-left: 20px;
-  margin-top: 50px;
+  margin-top: 80px;
   background-clip: text;
-  max-width: 250px;
   color: transparent;
+}
+
+.leaflet-container {
+  margin-top: 80px;
+  height: 100vh;
+  position: relative;
+  z-index: 1;
 }

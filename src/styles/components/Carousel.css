@@ -1,5 +1,7 @@
 #carousell-disp-child {
     display: flex;
+    padding: 20px;
+    align-items: center;
 } 
 
 #carousell-disp-imx {
@@ -8,20 +10,42 @@
 
 #carousell-disp-contx {
     width: 100%;
-    height: 350px;
-    background-color: blue;
     font-family: 'Poppins', sans-serif;
     text-align: left;
-    padding: 5px 10px;
+    padding: 15px 20px;
+    font-size: large;
+    
+}
+
+#carousell-disp-contx p {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #carousell-disp-contx h2 {
     
 }
 
+@media (max-width: 600px) {
+
+    #carousell-disp-child {
+        position: relative;
+        padding: 20px;
+        margin-bottom: 250px;
+    }
+
+    #carousell-disp-contx {
+        width: 100%;
+        font-family: 'Poppins', sans-serif;
+        text-align: left;
+        padding: 15px 10px;
+        font-size: small;
+        
+    }
+}
 @media (max-width: 1000px) {
     #carousell-disp-child {
-        margin-top: 150px;
+       
         position: relative;
         padding: 20px;
         margin-bottom: 350px;
@@ -34,7 +58,7 @@
 
     #carousell-disp-contx {
         width: 70%;
-        height: 350px;
+        padding-bottom: 20px;
         background-color: rgba(255, 255, 255, 0.692);
         position: absolute;
         right: 20px;
