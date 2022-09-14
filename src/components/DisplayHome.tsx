@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Carousel from "react-animated-carousel";
 import Globe from "react-globe.gl";
 import GlobeView from "./GlobeView";
@@ -16,6 +16,8 @@ const fadeInAnimation = keyframes`${fadeInRight}`;
 function DisplayHome() {
   const { mapActive } = useSelector(globeStateSlector);
 
+  const [mounted, setDismount] = useState(false);
+  
   return (
     <div id="main-home-display">
       <div id="temp-agent" className="webgl-container">

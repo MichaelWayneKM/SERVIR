@@ -38,7 +38,7 @@ function MapComponent() {
 }
 
 function GlobeView() {
-  /*const globeEl = useRef<any>();
+  const globeEl = useRef<any>();
   const [countries, setCountries] = useState(require("../assets/json/globe.json"));
   const [hover, setHover] = useState<null | boolean>();
   const [rotation, setRotation] = useState(true);
@@ -82,7 +82,7 @@ function GlobeView() {
       const scene = globeEl.current.scene();
       // scene.add(mesh);
     });
-  }, []);
+  }, []); 
 
   useEffect(() => {
     globeEl.current.controls().autoRotate = true;
@@ -120,9 +120,9 @@ function GlobeView() {
     }
   }, []);
 
-  const globeMaterial = useMemo(() => {
+  /*const globeMaterial = useMemo(() => {
     const globeMaterialTemp = new THREE.MeshPhongMaterial();
-    globeMaterialTemp.bumpScale = 10;
+    globeMaterialTemp.bumpScale = 1;
 
     new THREE.TextureLoader().load(
       "/assets/bump-large.jpg",
@@ -132,7 +132,7 @@ function GlobeView() {
     );
 
     return globeMaterialTemp;
-  }, []);
+  }, []);*/
 
   useEffect(() => {});
 
@@ -159,52 +159,52 @@ function GlobeView() {
     color: `rgba(${Math.random() * 156}, ${Math.random() * 16}, ${
       Math.random() * 56
     }, 1)`, // ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
-  })); */
+  })); 
 
   return (
-    // <Globe
-    //   ref={globeEl}
-    //   width={width}
-    //   globeImageUrl="/assets/earth-large.jpg"
-    //   // bumpImageUrl="/bump-large.jpg"
-    //   globeMaterial={globeMaterial}
-    //   //polygonsData={countries.features}
-    //    polygonsData={countries.features.filter(
-    //      (d: any) => d.properties.CONTINENT == "Africa"
-    //    )}
-    //   polygonAltitude={0.01}
-    //   polygonCapColor={(d: any) =>
-    //     d.properties.ISO_A3 === hover
-    //       ? "rgba(255, 255,255, 0.3)"
-    //       : "rgba(255, 255,255, 0)"
-    //   }
-    //   polygonSideColor={() => "rgba(255, 255, 255, 0)"}
-    //   polygonStrokeColor={() => "rgba(255, 255, 255, 0.5)"}
-    //   onPolygonHover={onHoverHandler}
-    //   htmlElementsData={gData}
-    //   htmlElement={(d: any) => {
-    //     const el = document.createElement("div");
-    //     el.innerHTML = markerSvg;
-    //     el.style.color = d.color;
-    //     el.style.width = `${d.size}px`;
+    <Globe
+      ref={globeEl}
+      width={width}
+      globeImageUrl="/assets/earth-large.jpg"
+      // bumpImageUrl="/bump-large.jpg"
+      //3globeMaterial={globeMaterial}
+      //polygonsData={countries.features}
+       polygonsData={countries.features.filter(
+         (d: any) => d.properties.SUBREGION ==  "Eastern Africa" || d.properties.SUBREGION ==  "Southern Africa"
+       )}
+      polygonAltitude={0.01}
+      polygonCapColor={(d: any) =>
+        d.properties.ISO_A3 === hover
+          ? "rgba(255, 255,255, 0.3)"
+          : "rgba(255, 255,255, 0)"
+      }
+      polygonSideColor={() => "rgba(255, 255, 255, 0)"}
+      polygonStrokeColor={() => "rgba(255, 255, 255, 0.5)"}
+      onPolygonHover={onHoverHandler}
+      htmlElementsData={gData}
+      htmlElement={(d: any) => {
+        const el = document.createElement("div");
+        el.innerHTML = markerSvg;
+        el.style.color = d.color;
+        el.style.width = `${d.size}px`;
 
-    //     el.style["pointer-events" as any] = "auto";
-    //     el.style.cursor = "pointer";
-    //     el.onclick = async () => {
-    //       console.info(d);
-    //       globeEl.current.pointOfView(
-    //         { altitude: 0.05, lat: d.lat, lng: d.lng },
-    //         2000
-    //       );
-    //       dispatch(mapZoomActive());
-    //     };
+        el.style["pointer-events" as any] = "auto";
+        el.style.cursor = "pointer";
+        el.onclick = async () => {
+          console.info(d);
+          globeEl.current.pointOfView(
+            { altitude: 0.05, lat: d.lat, lng: d.lng },
+            2000
+          );
+          dispatch(mapZoomActive());
+        };
 
-    //     return el;
-    //   }}
-    // />
-    <div className="leaflet-container">
-      <MapComponent />
-    </div>
+        return el;
+      }}
+    />
+    // <div className="leaflet-container">
+    //   <MapComponent />
+    // </div>
   );
 }
 
