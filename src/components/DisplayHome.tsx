@@ -11,23 +11,25 @@ import { useSelector } from "react-redux";
 import { globeStateSlector } from "../core/redux/slices/globe_mode_reducer";
 import { SizeMe } from "react-sizeme";
 import { Button } from "@mui/material";
+import VisibilitySensor from "react-visibility-sensor";
 
 const fadeInAnimation = keyframes`${fadeInRight}`;
 function DisplayHome() {
   const { mapActive } = useSelector(globeStateSlector);
 
   const [mounted, setDismount] = useState(false);
-  
+
+  const [globeVisible, setGlobeVisible] = useState(true);
+
   return (
-    <div id="main-home-display">
+    <div id="main-home-display" style={{ position: "relative", zIndex: 5}}>
       <div id="temp-agent" className="webgl-container">
+        
         <GlobeView />
 
         <div id="globe-view-lambert">
           {mapActive ? (
-            <Card>
-              {/* <GlobeCard /> */}
-            </Card>
+            <Card>{/* <GlobeCard /> */}</Card>
           ) : (
             <div id="intro-agent-container">
               <h5>Connecting Space to Village</h5>
@@ -38,7 +40,7 @@ function DisplayHome() {
                 and resilience to climate change
               </p>
 
-              <Button id="disp-hm-more-about-servir-btn" variant="contained" >
+              <Button id="disp-hm-more-about-servir-btn" variant="contained">
                 More about SERVIR
               </Button>
             </div>

@@ -4,6 +4,7 @@
     width: 100%;
 }
 
+/*
 #section-body-serviceAreas {
     display: flex;
     justify-content: space-between;
@@ -17,7 +18,6 @@
 
 #section-body-serviceAreas > div {
     flex: 1;
-    /* height: 250px; */
     margin-bottom: 20px;
     width: 100%;
     min-width: 350px;
@@ -56,7 +56,34 @@
 #section-body-serviceAreas > div > img:hover {
     transform: scale(1.2);
 }
+*/
 
+#section-body-serviceAreas {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#section-body-serviceAreas > div {
+    flex: 1;
+    min-width: 350px;
+    display: flex;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: large;
+}
+
+#section-body-serviceAreas > div img {
+    border-radius: 50%;
+}
+
+#section-body-serviceAreas > div > div {
+    margin-right: 5px;
+    padding: 5px;
+}
 #newsOverviewHome {
     display: flex;
     flex-wrap: wrap;
@@ -64,16 +91,16 @@
 
 #newsOverviewHome > div {
     flex: 1;
-    min-width: 350px;
+    min-width: 320px;
     min-height: 350px;
     margin: 5px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 #newsOverviewHome > div.news {
-    /* outline: 5px solid #da7f3a2a; */
-    /* border-radius: 10px; */
+    outline: 5px solid #da7f3a2a;
+    border-radius: 10px;
     position: relative;
     background: url(https://rcmrd.org/images/headers/Servir_Logo_Full_Color_Africa_Large.png);
     background-repeat: no-repeat;
@@ -119,7 +146,11 @@
 
 
 .upcoming {
-    padding-top: 20px;
+    padding-top: 0px;
+}
+
+.upcoming #section-holder {
+    margin-top: 10px;
 }
 
 .event-item {

@@ -6,6 +6,7 @@ import App from "./App";
 import { Provider } from "react-redux";
 import store from "./core/redux/store";
 import { BrowserRouter } from "react-router-dom";
+import { app } from "./firebaseConf";
 //import reportWebVitals from './reportWebVitals';
 
 
@@ -15,6 +16,11 @@ import { BrowserRouter } from "react-router-dom";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
+var x = app;
+console.log("Firebase App Initialize");
+
+
 root.render(
   <React.StrictMode>
   <Provider store={store}>
