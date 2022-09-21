@@ -1,8 +1,8 @@
 import { Action, createSlice } from "@reduxjs/toolkit";
-import { Auth } from "firebase/auth";
+import { Auth, User } from "firebase/auth";
 
 interface IUser {
-    user: Auth | null;
+    user: User | null;
 }
 
 const initialState: IUser = {
@@ -13,7 +13,9 @@ export const userSlice = createSlice({
     initialState,
     reducers: {
         login: (state: IUser, action: { payload: IUser["user"], type: string }) => {
+            console.log(state)
             state.user = action.payload;
+            console.log(state)
         },
         logout: (state: any) => {
             state.user = null;

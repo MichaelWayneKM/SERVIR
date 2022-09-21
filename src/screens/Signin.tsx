@@ -2,18 +2,24 @@ import { CardContent } from "@mui/material";
 import React, { useEffect } from "react";
 import GoogleButton from "react-google-button";
 import styled from "styled-components";
-import { getAuth, signInWithPopup, GoogleAuthProvider, browserLocalPersistence, setPersistence } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  browserLocalPersistence,
+  setPersistence,
+} from "firebase/auth";
 import { Dispatch } from "@reduxjs/toolkit";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../core/redux/slices/user";
+import { RootState } from "../core/redux/store";
 
-export const signinWithGoogleAction = async (dispatch: Dispatch<any>) => {
-
+export const signinWithGoogleAction = (dispatch: Dispatch<any>) => {
   const provider = new GoogleAuthProvider();
 
   const auth = getAuth();
 
-  setPersistence(auth, browserLocalPersistence).then(() => {
-    signInWithPopup(auth, provider)
+  signInWithPopup(auth, provider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -23,40 +29,41 @@ export const signinWithGoogleAction = async (dispatch: Dispatch<any>) => {
         // The signed-in user info.
         const user = result.user;
         // ...
-        
-        
-        dispatch(auth);
+
+        console.log(auth);
+
+        dispatch(login(auth.currentUser));
       }
     })
     .catch((error) => {
       // Handle Errors here.
+      console.log("Signin Error: ");
       const errorCode = error.code;
       const errorMessage = error.message;
+      console.log(`${errorCode} ${errorMessage}`)
       // The email of the user's account used.
-      const email = error.customData.email;
+      //const email = error.customData.email;
       // The AuthCredential type that was used.
       const credential = GoogleAuthProvider.credentialFromError(error);
       // ...
     });
-  })
-  
 };
 
 function Signin() {
 
-    const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const { user } = useSelector((state: RootState) => state.userState)
 
-    useEffect(() => {
-        const auth = getAuth();
-        console.log("User: Firebase Authent")
-        console.log(auth.currentUser)
-    }, [])
-
+  // useEffect(() => {
+  //     const auth = getAuth();
+  //     console.log("User: Firebase Authent")
+  //     console.log(auth.currentUser)
+  // }, [])
 
   return (
     <Container>
       <Card>
-        <div className="section-title">Login to Continue</div>
+        <div className="section-title" style={user ? { fontSize: 21 } : {}}>{user ? "Hello,\n" + user.email : "Login to Continue"}</div>
         <div>
           <hr />
           <GoogleButton

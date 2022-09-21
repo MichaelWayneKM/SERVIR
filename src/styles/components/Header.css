@@ -84,15 +84,25 @@
 .hamburger-react {
     display: none;
 }
+
+
+.main-header > nav > div.navitem {
+    display: none;
+}
+
+.hamburger-react {
+    display: inline-block;
+}
+
 /* Medium Device (Tablet) */
 @media (max-width:1000px) {
-    .main-header > nav > div.navitem {
+    /* .main-header > nav > div.navitem {
         display: none;
     }
 
     .hamburger-react {
         display: inline-block;
-    }
+    } */
 
 }
 /* Small Device (PHONE) */

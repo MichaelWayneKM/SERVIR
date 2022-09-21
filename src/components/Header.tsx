@@ -11,11 +11,13 @@ export const HamburgerMenu = ({
   mx = 0,
   my = 0,
   color = "white",
+  floatDisabled = false,
 }: {
   keyID: string;
   mx?: number;
   my?: number;
   color?: string;
+  floatDisabled?: boolean;
 }) => {
   const [isHamburgerOpen, setOpen] = useState<boolean>(false);
 
@@ -24,12 +26,21 @@ export const HamburgerMenu = ({
 
   
 
+  if (floatDisabled) {
+    return (
+      <Hamburger
+        color={color}
+        toggled={state.sidebarActive}
+        toggle={() => dispatch(toggleSideBar())}
+      />
+    )
+  }
   return (
     <div
       id={keyID}
       style={{
         position: "absolute",
-        right: mx,
+        right: mx == 0 ? undefined : mx,
         top: my == 0 ? undefined : my,
         display: "flex",
         alignItems: "center",
