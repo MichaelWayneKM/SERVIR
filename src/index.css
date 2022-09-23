@@ -21,7 +21,7 @@ html, body {
   background: linear-gradient(to bottom right, rgb(25, 24, 43), #da803a);
   font-family: 'Poppins', sans-serif;
   margin-left: 20px;
-  margin-top: 80px;
+  margin-top: 60px;
   background-clip: text;
   color: transparent;
 }
@@ -32,3 +32,4 @@ html, body {
   position: relative;
   z-index: 1;
 }
+

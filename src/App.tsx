@@ -1,14 +1,26 @@
-import React from "react";
+import React, { Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { Footer } from "./components/Footer";
-import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
-import About from "./screens/About";
-import Home from "./screens/Home";
+import NewsAndEvents from "./screens/NewsAndEvents";
+import NotFound404 from "./screens/NotFound404";
+import Signin from "./screens/Signin";
+
+import { Button } from "@mui/material";
+import { useSelector } from "react-redux";
+import { RootState } from "./core/redux/store";
+import Administration from "./screens/Administration";
+
+const Header = React.lazy(() => import("./components/Header"));
+const Sidebar = React.lazy(() => import("./components/Sidebar"));
+const About = React.lazy(() => import("./screens/About"));
+const Home = React.lazy(() => import("./screens/Home"));
 
 function App() {
+
+  
+
   return (
-    <>
+    <Suspense fallback={<div>~</div>}>
       <div
         className="sponsors"
         style={{
@@ -37,16 +49,22 @@ function App() {
         />
       </div>
 
+   
+
       <Header />
       <Sidebar />
 
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
+        <Route path="login" element={<Signin />} />
+        <Route path="events" element={<NewsAndEvents />} />
+        <Route path="/admin" element={<Administration />} />
+        <Route path="*" element={<NotFound404 />} />
       </Routes>
 
       <Footer />
-    </>
+    </Suspense>
   );
 }
 

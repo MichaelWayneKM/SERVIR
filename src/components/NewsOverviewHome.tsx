@@ -47,20 +47,26 @@ function NewsOverviewHome() {
         </span>
         <NewsItem />
         <NewsItem />
+        
         <Pagination
           style={{ margin: 25 }}
           count={10}
           variant="outlined"
           color="primary"
+          size="small"
         />
+        
       </div>
       <div className="upcoming">
         <div id="section-title">Upcoming Events</div>
         <EventItem />
         <EventItem />
         <EventItem />
+        
       </div>
-      <div className="quick-links"></div>
+      <div className="quick-links">
+        <div className="section-title" style={{ marginTop: 50, marginLeft: 10 }}></div>
+      </div>
     </div>
   );
 }

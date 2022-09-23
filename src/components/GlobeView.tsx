@@ -15,31 +15,9 @@ import {
   mapZoomActive,
 } from "../core/redux/slices/globe_mode_reducer";
 
-import { MapContainer, TileLayer, useMap, Marker, Popup } from "react-leaflet";
-
-type LatLngTuple = number[];
-function MapComponent() {
-  const position: any = [1.2212, 36.8941];
-
-  return (
-    <MapContainer center={position} zoom={13} scrollWheelZoom={false}>
-      <TileLayer
-        //attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        //url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"  
-        url="url='https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'"
-      />
-      <Marker position={position}>
-        <Popup>
-          A pretty CSS3 popup. <br /> Easily customizable.
-        </Popup>
-      </Marker>
-    </MapContainer>
-  );
-}
-
 function GlobeView() {
   const globeEl = useRef<any>();
-  const [countries, setCountries] = useState(require("../assets/json/globe.json"));
+  const [countries, setCountries] = useState({ features: [] });
   const [hover, setHover] = useState<null | boolean>();
   const [rotation, setRotation] = useState(true);
 
@@ -49,15 +27,17 @@ function GlobeView() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    fetch(
+      "https://raw.githubusercontent.com/vasturiano/react-globe.gl/master/example/datasets/ne_110m_admin_0_countries.geojson"
+    )
+      .then((res) => res.json())
+      .then((countries) => {
+        setCountries(countries);
+      });
+
     window.addEventListener("resize", (e) => {
       setWidth(window.innerWidth);
     });
-
-    return () => {
-      window.removeEventListener("resize", () => {
-        //console.log("")
-      });
-    }
   }, []);
 
   useEffect(() => {
@@ -82,7 +62,7 @@ function GlobeView() {
       const scene = globeEl.current.scene();
       // scene.add(mesh);
     });
-  }, []); 
+  }, []);
 
   useEffect(() => {
     globeEl.current.controls().autoRotate = true;
@@ -108,7 +88,7 @@ function GlobeView() {
     }
   }, [mapActive]);
 
-  const onHoverHandler = useCallback(async (polygon: any) => {
+  const onHoverHandler = useCallback((polygon: any) => {
     if (polygon !== null) {
       setHover(polygon.properties.ISO_A3);
       // setRotation(false);
@@ -120,23 +100,22 @@ function GlobeView() {
     }
   }, []);
 
-  /*const globeMaterial = useMemo(() => {
+  const globeMaterial = useMemo(() => {
     const globeMaterialTemp = new THREE.MeshPhongMaterial();
-    globeMaterialTemp.bumpScale = 1;
+    globeMaterialTemp.bumpScale = 10;
 
-    new THREE.TextureLoader().load(
-      "/assets/bump-large.jpg",
-      async (texture) => {
-        globeMaterial.bumpMap = texture;
-      }
-    );
+    new THREE.TextureLoader().load("/assets/bump-large.jpg", (texture) => {
+      globeMaterial.bumpMap = texture;
+    });
 
     return globeMaterialTemp;
-  }, []);*/
+  }, []);
 
   useEffect(() => {});
 
-  
+  /* 
+      Configure pointers
+  */
 
   const markerSvg = `
   <div>
@@ -149,8 +128,7 @@ function GlobeView() {
 
   // Gen random data
   const N = 1;
-  const gData = [...(Array(N) as any).keys()].map(async () => ({
-    // Async performance Throttle
+  const gData = [...(Array(N) as any).keys()].map(() => ({
     //lat: (Math.random() - 0.5) * 180,
     //lng: (Math.random() - 0.5) * 360,1.2212° S, 36.8941° E
     lat: 1.2212,
@@ -159,7 +137,7 @@ function GlobeView() {
     color: `rgba(${Math.random() * 156}, ${Math.random() * 16}, ${
       Math.random() * 56
     }, 1)`, // ["red", "white", "blue", "green"][Math.round(Math.random() * 3)],
-  })); 
+  }));
 
   return (
     <Globe
@@ -167,11 +145,10 @@ function GlobeView() {
       width={width}
       globeImageUrl="/assets/earth-large.jpg"
       // bumpImageUrl="/bump-large.jpg"
-      //3globeMaterial={globeMaterial}
-      //polygonsData={countries.features}
-       polygonsData={countries.features.filter(
+      globeMaterial={globeMaterial}
+      polygonsData={countries.features.filter(
          (d: any) => d.properties.SUBREGION ==  "Eastern Africa" || d.properties.SUBREGION ==  "Southern Africa"
-       )}
+      )}
       polygonAltitude={0.01}
       polygonCapColor={(d: any) =>
         d.properties.ISO_A3 === hover
@@ -190,7 +167,7 @@ function GlobeView() {
 
         el.style["pointer-events" as any] = "auto";
         el.style.cursor = "pointer";
-        el.onclick = async () => {
+        el.onclick = () => {
           console.info(d);
           globeEl.current.pointOfView(
             { altitude: 0.05, lat: d.lat, lng: d.lng },
@@ -202,10 +179,7 @@ function GlobeView() {
         return el;
       }}
     />
-    // <div className="leaflet-container">
-    //   <MapComponent />
-    // </div>
   );
 }
 
-export default React.memo(GlobeView);
+export default GlobeView;
