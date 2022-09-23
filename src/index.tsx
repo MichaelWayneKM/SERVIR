@@ -1,17 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import 'mdb-react-ui-kit/dist/css/mdb.min.css'
+import "mdb-react-ui-kit/dist/css/mdb.min.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import store from "./core/redux/store";
 import { BrowserRouter } from "react-router-dom";
 import { app } from "./firebaseConf";
 //import reportWebVitals from './reportWebVitals';
-
-
-
-
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -20,15 +16,12 @@ const root = ReactDOM.createRoot(
 var x = app;
 console.log("Firebase App Initialize");
 
-
 root.render(
-  <React.StrictMode>
   <Provider store={store}>
     <BrowserRouter>
       <App />
     </BrowserRouter>
   </Provider>
-  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

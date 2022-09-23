@@ -65,7 +65,7 @@ function NewsOverviewHome() {
         
       </div>
       <div className="quick-links">
-        <div className="section-title" style={{ marginTop: 50, marginLeft: 10 }}>Quick Links</div>
+        <div className="section-title" style={{ marginTop: 50, marginLeft: 10 }}></div>
       </div>
     </div>
   );
